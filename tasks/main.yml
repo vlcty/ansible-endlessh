@@ -5,14 +5,13 @@
           - ansible_system is defined
           - ansible_system == "Linux"
 
-
 - name: Deploy binary
   copy:
       src: endlessh
       dest: /usr/local/sbin/endlessh
       owner: root
       group: root
-      mode: 0700
+      mode: "0700"
   notify: Restart endlessh
 
 - name: Deploy service
@@ -20,7 +19,7 @@
       src: service.j2
       dest: /etc/systemd/system/endlessh.service
       owner: root
-      group: 0644
+      group: "0644"
   notify: Restart endlessh
 
 - name: Start and enable endlessh
