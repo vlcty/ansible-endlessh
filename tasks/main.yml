@@ -1,0 +1,31 @@
+---
+- name: Assert we are on archlinux
+  assert:
+      that:
+          - ansible_system is defined
+          - ansible_system == "Linux"
+
+
+- name: Deploy binary
+  copy:
+      src: endlessh
+      dest: /usr/local/sbin/endlessh
+      owner: root
+      group: root
+      mode: 0700
+  notify: Restart endlessh
+
+- name: Deploy service
+  template:
+      src: service.j2
+      dest: /etc/systemd/system/endlessh.service
+      owner: root
+      group: 0644
+  notify: Restart endlessh
+
+- name: Start and enable endlessh
+  systemd:
+      name: endlessh
+      enabled: true
+      state: started
+      daemon_reload: true

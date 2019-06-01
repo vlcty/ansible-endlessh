@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  author: Josef 'veloc1ty' Stautner
+  description: Installs a precompiled endlessh
+  company: None
+  license: MIT
+  min_ansible_version: 2.5
+  platforms:
+  - name: GenericLinux
+    versions:
+    - all
+    - any
+  categories:
+  - system
+  - web
+dependencies: []
+allow_duplicates: yes

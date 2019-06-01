@@ -1,0 +1,5 @@
+---
+- name: Restart endlessh
+  systemd:
+      name: endlessh
+      state: restarted

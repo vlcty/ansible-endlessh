@@ -1,0 +1,16 @@
+#
+# Managed by ansible
+# Role: endlessh
+#
+[Unit]
+Description=EndleSSH - SSH pit
+After=network.target network-online.target sshd.service
+
+[Service]
+User=root
+Group=root
+Type=simple
+ExecStart=/usr/local/sbin/endlessh -4 -p 22 -v
+
+[Install]
+WantedBy=multi-user.target
